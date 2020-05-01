@@ -53,9 +53,24 @@
           </option>
         </select>
       </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="dateOfBirth">Date of Birth</label>
+          <input id="dateOfBirth" name="dateOfBirth" [(ngModel)]="dateOfBirth" type="text" bsDatepicker
+            placement="right" [bsConfig]="datePickerConfig" class="form-control">
+        </div>
+      </div>
       <div class="form-group">
-        <label for="dateOfBirth">Date of Birth</label>
-        <input id="dateOfBirth" name="dateOfBirth" [(ngModel)]="dateOfBirth" type="text" bsDatepicker class="form-control">
+        <label for="wholePath">Photo Path</label>
+        <input id="wholePath" name="wholePath" [(ngModel)]="wholePath" type="file" class="form-control">
+      </div>
+      <div class="form-group">
+        <button type="button" class="btn btn-primary" (click)="togglePhotoPreview()">
+          {{previewPhoto ? "Hide" : "Show" }} Preview
+        </button>
+      </div>
+      <div class="form-group">
+        <img [src]="photoPath" width="200" alt="" *ngIf="previewPhoto">
       </div>
     </div>
     <div class="panel-footer">
