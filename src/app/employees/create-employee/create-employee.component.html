@@ -4,6 +4,7 @@
       <h3 class="panel-title">Create Employee</h3>
     </div>
     <div class="panel-body">
+      
       <div class="form-group" [class.has-error]="name.touched && name.invalid" [class.has-success]="name.valid">
         <label for="name" class="control-label">Name</label>
         <input id="name" required name="name" [(ngModel)]="employee.name" type="text" class="form-control"
@@ -12,6 +13,7 @@
           Full Name is required.
         </span>
       </div>
+
       <div class="form-group" [class.has-error]="email.invalid">
         <label for="email" class="control-label">Email</label>
         <input id="email" [required]="contactPreference.value==='email'"
@@ -24,6 +26,7 @@
           Email is invalid.
         </span>
       </div>
+
       <div class="form-group" [class.has-error]="phoneNumber.invalid">
         <label class="control-label" for="phoneNumber">Phone Number</label>
         <input id="phoneNumber" [required]="contactPreference.value==='phone'" #phoneNumber="ngModel" name="phoneNumber"
@@ -32,6 +35,7 @@
           Phone Number is required.
         </span>
       </div>
+
       <div class="form-group" [class.has-error]="contactPreference.touched && contactPreference.invalid">
         <label class="control-label">Contact Preference</label>
         <div class="form-control">
@@ -94,19 +98,23 @@
             placement="right" [bsConfig]="datePickerConfig" class="form-control">
         </div>
       </div>
+
       <div class="form-group">
         <label for="photoPath">Photo Path</label>
         <input id="photoPath" name="photoPath" [(ngModel)]="employee.photoPath" (click)="hidePreview()" type="file"
           class="form-control">
       </div>
+      
       <div class="form-group">
         <button type="button" class="btn btn-primary" (click)="togglePhotoPreview()">
           {{previewPhoto ? "Hide" : "Show" }} Preview
         </button>
       </div>
+      
       <div class="form-group">
         <img [src]="photoPath" width="200" alt="" *ngIf="previewPhoto">
       </div>
+
     </div>
     <div class="panel-footer">
       <button type="submit" class="btn btn-primary" [disabled]="employeeForm.invalid">Save</button>
