@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Department } from 'src/app/models/department.model';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker/public_api';
+import { Employee } from 'src/app/models/employee.model';
 
 @Component({
   selector: 'app-create-employee',
@@ -11,14 +12,20 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker/public_api';
 export class CreateEmployeeComponent implements OnInit {
 
   public photoPath = '';
-  set wholePath(p: string) {
-    this.photoPath = 'assets/images/' + p.substr(p.lastIndexOf('\\') + 1);
-  }
-
   public previewPhoto = false;
-  public dateOfBirth: Date = new Date(2018, 0, 1);
   public datePickerConfig: Partial<BsDatepickerConfig>;
-
+  public employee: Employee = {
+    id: null,
+    name: null,
+    gender: null,
+    email: null,
+    phoneNumber: null,
+    contactPreference: null,
+    dateOfBirth: null,
+    department: '-1',
+    isActive: null,
+    photoPath: null,
+  };
   public departments: Department[] = [
     { id: 1, name: 'Help Desk' },
     { id: 2, name: 'HR' },
@@ -30,9 +37,6 @@ export class CreateEmployeeComponent implements OnInit {
     this.datePickerConfig = Object.assign({},
       {
         containerClass: 'theme-dark-blue',
-        showWeekNumbers: true,
-        minDate: new Date(2019, 11, 1),
-        maxDate: new Date(2020, 4, 1),
         dateInputFormat: 'DD/MM/YYYY'
       }
     );
@@ -41,11 +45,16 @@ export class CreateEmployeeComponent implements OnInit {
   ngOnInit() {
   }
 
-  public saveEmployee(empForm: NgForm): void {
-    console.log(empForm);
+  public saveEmployee(emp: Employee): void {
+    console.log(emp);
+  }
+
+  public hidePreview(): void {
+    this.previewPhoto = false;
   }
 
   public togglePhotoPreview(): void {
+    this.photoPath = 'assets/images/' + this.employee.photoPath.substr(this.employee.photoPath.lastIndexOf('\\') + 1);
     this.previewPhoto = !this.previewPhoto;
   }
 
