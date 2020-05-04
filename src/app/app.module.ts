@@ -9,13 +9,15 @@ import { CreateEmployeeComponent } from './employees/create-employee/create-empl
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SelectRequiredValidatorDirective } from './shared/select-required-validator.directive';
+import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListEmployeesComponent,
     CreateEmployeeComponent,
-    SelectRequiredValidatorDirective
+    SelectRequiredValidatorDirective,
+    ConfirmEqualValidatorDirective
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,10 @@ import { SelectRequiredValidatorDirective } from './shared/select-required-valid
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule
   ],
-  providers: [SelectRequiredValidatorDirective],
+  providers: [
+    SelectRequiredValidatorDirective,
+    ConfirmEqualValidatorDirective
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
