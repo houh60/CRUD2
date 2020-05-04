@@ -4,7 +4,7 @@
       <h3 class="panel-title">Create Employee</h3>
     </div>
     <div class="panel-body">
-      
+
       <div class="form-group" [class.has-error]="name.touched && name.invalid" [class.has-success]="name.valid">
         <label for="name" class="control-label">Name</label>
         <input id="name" required name="name" [(ngModel)]="employee.name" type="text" class="form-control"
@@ -79,14 +79,14 @@
 
       <div class="form-group" [class.has-error]="department.touched && department.invalid">
         <label for="department" class="control-label">Department</label>
-        <select name="department" id="department" required #department="ngModel" [(ngModel)]="employee.department"
-          class="form-control">
-          <option ngValue="-1">Select Department</option>
+        <select name="department" id="department" appSelectValidator="select" #department="ngModel"
+          [(ngModel)]="employee.department" class="form-control">
+          <option ngValue="select">Select Department</option>
           <option *ngFor="let department of departments" [value]="department.id">
             {{department.name}}
           </option>
         </select>
-        <span class="help-block" *ngIf="department.touched && department.invalid">
+        <span class="help-block" *ngIf="department.touched && department.errors?.defaultSelected">
           Department is required.
         </span>
       </div>
@@ -104,13 +104,13 @@
         <input id="photoPath" name="photoPath" [(ngModel)]="employee.photoPath" (click)="hidePreview()" type="file"
           class="form-control">
       </div>
-      
+
       <div class="form-group">
         <button type="button" class="btn btn-primary" (click)="togglePhotoPreview()">
           {{previewPhoto ? "Hide" : "Show" }} Preview
         </button>
       </div>
-      
+
       <div class="form-group">
         <img [src]="photoPath" width="200" alt="" *ngIf="previewPhoto">
       </div>
