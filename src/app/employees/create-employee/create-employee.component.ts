@@ -14,6 +14,7 @@ export class CreateEmployeeComponent implements OnInit {
   public photoPath = '';
   public previewPhoto = false;
   public datePickerConfig: Partial<BsDatepickerConfig>;
+  public passwordConfirmed: boolean;
   public employee: Employee = {
     id: null,
     name: null,
@@ -58,6 +59,14 @@ export class CreateEmployeeComponent implements OnInit {
   public togglePhotoPreview(): void {
     this.photoPath = 'assets/images/' + this.employee.photoPath.substr(this.employee.photoPath.lastIndexOf('\\') + 1);
     this.previewPhoto = !this.previewPhoto;
+  }
+
+  public toConfirmPassword(): void {
+    if(this.employee.password === this.employee.confirmPassword) {
+      this.passwordConfirmed = true;
+    } else {
+      this.passwordConfirmed = false;
+    }
   }
 
 }

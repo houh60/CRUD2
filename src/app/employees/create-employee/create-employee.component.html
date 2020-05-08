@@ -129,7 +129,7 @@
         <div class="form-group" [class.has-error]="confirmPassword.touched && confirmPassword.errors?.required">
           <label for="confirmPassword" class="control-label">Confirm Password</label>
           <input type="text" required class="form-control" name="confirmPassword" appConfirmEqualValidator="password"
-            [(ngModel)]="employee.confirmPassword" #confirmPassword="ngModel">
+            [(ngModel)]="employee.confirmPassword" #confirmPassword="ngModel" (input)="toConfirmPassword()">
           <span class="help-block" *ngIf="confirmPassword.touched && confirmPassword.errors?.required">
             Confirm Password is required.
           </span>
