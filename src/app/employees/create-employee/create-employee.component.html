@@ -115,31 +115,6 @@
         <img [src]="photoPath" width="200" alt="" *ngIf="previewPhoto">
       </div>
 
-      <div ngModelGroup="passwordGroup" passwordGroup="ngModelGroup"
-        [class.has-error]="confirmPassword.touched && confirmPassword.invalid && !confirmPassword.errors?.required">
-        <div class="form-group" [class.has-error]="password.touched && password.invalid">
-          <label for="password" class="control-label">Password</label>
-          <input type="text" required class="form-control" name="password" [(ngModel)]="employee.password"
-            #password="ngModel" (input)="confirmPassword.control.updateValueAndValidity()">
-          <span class="help-block" *ngIf="password.touched && password.errors?.required">
-            Password is required.
-          </span>
-        </div>
-
-        <div class="form-group" [class.has-error]="confirmPassword.touched && confirmPassword.errors?.required">
-          <label for="confirmPassword" class="control-label">Confirm Password</label>
-          <input type="text" required class="form-control" name="confirmPassword" appConfirmEqualValidator="password"
-            [(ngModel)]="employee.confirmPassword" #confirmPassword="ngModel" (input)="toConfirmPassword()">
-          <span class="help-block" *ngIf="confirmPassword.touched && confirmPassword.errors?.required">
-            Confirm Password is required.
-          </span>
-          <span class="help-block"
-            *ngIf="confirmPassword.touched && confirmPassword.errors?.notEqual && !confirmPassword.errors?.required">
-            Password and Confirm Password don't match.
-          </span>
-        </div>
-      </div>
-
     </div>
     <div class="panel-footer">
       <button type="submit" class="btn btn-primary" [disabled]="employeeForm.invalid">Save</button>
