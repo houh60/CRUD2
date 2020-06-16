@@ -1,3 +1,6 @@
-<div *ngFor="let employee of employees">
-  <app-display-employee [employee]="employee"></app-display-employee>
+<h1></h1>
+<div *ngFor="let employee of employees" class="hand">
+  <div (click)="onClick(employee.id)">
+    <app-display-employee [employee]="employee"></app-display-employee>
+  </div>
 </div>

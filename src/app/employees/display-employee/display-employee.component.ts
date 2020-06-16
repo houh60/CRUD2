@@ -11,7 +11,6 @@ export class DisplayEmployeeComponent implements OnInit {
   @Input() employee: Employee;
 
   constructor() { }
-
   ngOnInit() {
   }
 
